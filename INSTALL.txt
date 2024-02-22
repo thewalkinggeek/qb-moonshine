@@ -1,0 +1,100 @@
+---- Generic INSTALL Instructions ----
+
+** MOVE:
+qb-moonshine/ folder to server script directory
+
+
+** MOVE:
+Moonshine/ folder to the map streaming directory and enable it.
+(start Moonshine in server.cfg)
+
+** MOVE:
+boil.ogg to interact-sound/ folder.
+
+
+** MOVE:
+images in images/ to inventory images folder.
+
+
+--- Add basic consumable values to new fruit items ---
+** ADD TO:  
+Consumeables = { in smallresources\config.lua
+
+
+    ["apple"] = math.random(5, 10),
+    ["cherries"] = math.random(5, 10),
+    ["peach"] = math.random(5, 10),
+
+
+
+
+--- Adds new items to QBCore shared items list ---
+** ADD TO:
+\shared.lua
+
+---Moonshine---
+	["mash"] 					 	 = {["name"] = "mash", 			 	  	  		["label"] = "Corn Mash", 				["weight"] = 50000, 	["type"] = "item", 		["image"] = "mash.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Small batch of quality corn mash."},
+	["moonshine"] 					 = {["name"] = "moonshine", 			 	  	["label"] = "White Lightning", 			["weight"] = 5000, 		["type"] = "item", 		["image"] = "moonshine.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "A mean little jug of hooch."},
+	["apple"] 					 	 = {["name"] = "apple", 			 	  	  	["label"] = "Red Apple", 				["weight"] = 1, 		["type"] = "item", 		["image"] = "apple.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Fresh Red Apple."},
+	["cherries"] 					 = {["name"] = "cherries", 			 	  	  	["label"] = "Cherries", 				["weight"] = 1, 		["type"] = "item", 		["image"] = "cherries.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Fresh Cherries."},
+	["peach"] 						 = {["name"] = "peach", 			 	  	  	["label"] = "Peach", 					["weight"] = 1, 		["type"] = "item", 		["image"] = "peach.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Fresh Peach."},
+	["toplessgranny"] 				 = {["name"] = "toplessgranny", 			 	["label"] = "Topless Granny", 			["weight"] = 2000, 		["type"] = "item", 		["image"] = "toplessgranny.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Apple Pie Moonshine."},
+	["peachfurry"] 					 = {["name"] = "peachfurry", 			 	  	["label"] = "Peach Furry", 				["weight"] = 2000, 		["type"] = "item", 		["image"] = "peachfurry.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Peach Moonshine."},
+	["cherrybomb"] 					 = {["name"] = "cherrybomb", 			 	  	["label"] = "Cherry Bomb", 				["weight"] = 2000, 		["type"] = "item", 		["image"] = "cherrybomb.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Cherry Moonshine."},
+	["holywater"] 					 = {["name"] = "holywater", 			 	  	["label"] = "Holy Water", 				["weight"] = 2000, 		["type"] = "item", 		["image"] = "holywater.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Double Distilled White Lightning."},
+	["shinerecipe"] 				 = {["name"] = "shinerecipe", 			 	  	["label"] = "PeePaws Shiner Recipes", 	["weight"] = 1, 		["type"] = "item", 		["image"] = "shinerecipe.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Special Notes:  Topless Granny - Apples, Peach Furry - Peaches, Cherry Bomb - Cherries."},
+
+
+
+
+--- Adds new moonshine drinking animation/emote ---
+** ADD TO:
+Client\AnimationList.lua
+
+["moonshine"] = {"amb@world_human_drinking@coffee@male@idle_a", "idle_c", "White Lightning", AnimationOptions =
+   {
+       Prop = "prop_ceramic_jug_01",
+       PropBone = 28422,
+       PropPlacement = {0.05, -0.01, -0.1, 0.0, 0.0, 80.0},
+       EmoteLoop = true,
+       EmoteMoving = true,
+   }},
+
+
+
+
+--- Adds the PEDs for the Moonshine gameplay loop ---
+** ADD TO:
+ped spawner script\config.lua  
+
+
+
+	----------------------------------------
+	---       Larry The Farmer Ped       ---
+	----------------------------------------
+	{
+		model = "cs_old_man1a",
+		coords = vector3(1233.039, 1852.777, 79.37341),
+		heading = 210.25971984863, 
+		gender = "male", 
+	},
+	----------------------------------------
+	---      Prison Fruit Stand PED      ---
+	----------------------------------------
+	{		
+		model = "g_f_y_vagos_01",
+		coords = vector3(1478.234,2722.251,37.63801), 
+		heading = 25.501203536987, 
+		gender = "female", 
+		animName = "WORLD_HUMAN_STAND_IMPATIENT",
+	},
+	----------------------------------------
+	---         Hippie Park PED          ---
+	----------------------------------------
+	{		
+		model = "a_m_y_hippy_01",
+		coords = vector3(2477.537, 3761.575, 41.92), 
+		heading = 95.763488769531, 
+		gender = "male", 
+		animName = "WORLD_HUMAN_DRUG_DEALER",
+	},
