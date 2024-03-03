@@ -41,4 +41,4 @@ Custom SoundFX, ParticleFX, Camera, and Player control consume effects
 
 ** Please read INSTALL.txt for generic installation guidance. **
 
-Enjoy! -Hark (TWG)
+Enjoy! -Jon Schoenberger
